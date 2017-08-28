@@ -3,56 +3,51 @@
  * Licensed under the MIT License. See LICENSE in the project root for
  * license information.
  */
-package com.microsoft.azure.demo.model;
+package com.microsoft.azure.sample.model;
 
-import com.fasterxml.jackson.annotation.*;
+import com.microsoft.azure.spring.data.documentdb.core.mapping.Document;
+import org.springframework.data.annotation.Id;
 
 import java.util.Objects;
 
-@JsonPropertyOrder({"ID", "Description", "Owner"})
+@Document(collection = "mycollection")
 public class TodoItem {
+    @Id
+    private String id;
     private String description;
-    private int id;
     private String owner;
 
-    @JsonCreator
-    public TodoItem(
-            @JsonProperty("ID") int id,
-            @JsonProperty("Description") String description,
-            @JsonProperty("Owner") String owner
-    ) {
+    public TodoItem(String id, String description, String owner) {
         this.description = description;
         this.id = id;
         this.owner = owner;
     }
 
-    @JsonGetter("Description")
+
+    public TodoItem() {
+    }
+
     public String getDescription() {
         return description;
     }
 
-    @JsonSetter("Description")
     public void setDescription(String description) {
         this.description = description;
     }
 
-    @JsonGetter("Owner")
     public String getOwner() {
         return owner;
     }
 
-    @JsonSetter("Owner")
     public void setOwner(String owner) {
         this.owner = owner;
     }
 
-    @JsonGetter("ID")
-    public int getID() {
+    public String getID() {
         return id;
     }
 
-    @JsonSetter("ID")
-    public void setID(int id) {
+    public void setID(String id) {
         this.id = id;
     }
 
@@ -67,7 +62,7 @@ public class TodoItem {
         final TodoItem group = (TodoItem) o;
         return this.getDescription().equals(group.getDescription())
                 && this.getOwner().equals(group.getOwner())
-                && this.getID() == group.getID();
+                && this.getID().equals(group.getID());
     }
 
     @Override
