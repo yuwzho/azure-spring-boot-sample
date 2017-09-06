@@ -2,33 +2,35 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <title>Todo List: a SPA sample demonstrating Azure AD and ADAL JS</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" />
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.25/angular.min.js"></script>
+<script src="https://code.angularjs.org/1.2.25/angular-route.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js"></script>
+<script src="Scripts/app.js"></script>
+<script src="Scripts/homeCtrl.js"></script>
+<script src="Scripts/todoListCtrl.js"></script>
+<script src="Scripts/todoListSvc.js"></script>
 </head>
 <body ng-app="todoApp" ng-controller="homeCtrl" role="document">
-<div class="navbar navbar-inverse navbar-fixed-top  bg-inverse" role="navigation">
+<nav class="navbar fixed-top navbar-expand-sm navbar-dark bg-dark">
     <div class="container">
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle collapsed"
-                    data-toggle="collapse"
-                    data-target=".navbar-collapse">
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navBarToggler" aria-controls="navBarToggler" aria-expanded="false" aria-label="Azure Spring Boot Sample">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navBarToggler">
             <a class="navbar-brand" href="#/Home">Azure Spring Boot Sample</a>
-        </div>
-        <div class="navbar-collapse collapse">
-            <ul class="nav navbar-nav">
-                <li ng-class="{ active: isActive('/Home') }"><a href="#/Home">Home</a></li>
-                <li ng-class="{ active: isActive('/TodoList') }"><a href="#/TodoList">Todo List</a></li>
+            <ul class="navbar-nav">
+                <li ng-class="{ active: isActive('/Home') }"><a class="nav-link" href="#/Home">Home</a></li>
+                <li ng-class="{ active: isActive('/TodoList') }"><a class="nav-link" href="#/TodoList">Todo List</a></li>
             </ul>
         </div>
     </div>
-</div>
+</nav>
 
 <div class="container">
-    <div class="jumbotron" style="background-color:transparent !important;">
+    <div class="jumbotron" style="background-color:transparent !important; margin-top: 40px !important;">
         <h1>Todo List</h1>
         <p>This sample demonstrates ??????? (some sentences)</p>
     </div>
@@ -38,13 +40,6 @@
 <div class="container" role="main">
     <div ng-view class="panel-body">
 </div>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.25/angular.min.js"></script>
-<script src="https://code.angularjs.org/1.2.25/angular-route.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
-<script src="Scripts/app.js"></script>
-<script src="Scripts/homeCtrl.js"></script>
-<script src="Scripts/todoListCtrl.js"></script>
-<script src="Scripts/todoListSvc.js"></script>
+</div>
 </body>
 </html>

@@ -16,6 +16,10 @@ public class TodoItem {
     private String id;
     private String description;
     private String owner;
+    private boolean finish;
+
+    public TodoItem() {
+    }
 
     public TodoItem(String id, String description, String owner) {
         this.description = description;
@@ -23,8 +27,12 @@ public class TodoItem {
         this.owner = owner;
     }
 
+    public boolean isFinish() {
+        return finish;
+    }
 
-    public TodoItem() {
+    public void setFinish(boolean finish) {
+        this.finish = finish;
     }
 
     public String getDescription() {

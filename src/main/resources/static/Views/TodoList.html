@@ -1,31 +1,31 @@
 <div ng-init="populate()">
-    <p class="error">{{error}}</p>
-    <p>{{loadingMessage}}</p>
+    <div class="alert alert-danger" data-ng-show="error && error !== ''"><strong>Fail!</strong>&nbsp;{{error}}</div>
+    <div class="alert alert-success" data-ng-show="loadingMessage && loadingMessage !== ''"><strong>Success!</strong>&nbsp;{{loadingMessage}}</div>
     <div class="panel">
-        <div class="input-group">
+
+        <div class="input-group" style="margin-bottom: 20px !important;">
             <input ng-model="newTodoCaption" class="form-control"/>
             <span class="input-group-btn">
-                <button ng-click="add();" class="btn btn-default">Add</button>
+                <button ng-click="add();" class="btn btn-primary">Add</button>
             </span>
         </div>
-        <table class="table table-striped">
-            <tbody>
-            <tr data-ng-repeat="item in todoList">
-                <td>
-                    <p data-ng-hide="item.edit">{{item.description}}</p>
-                    <input data-ng-show="item.edit" type="text" data-ng-model="editInProgressTodo.description"
-                           class="form-control"/>
-                </td>
-                <td>
-                    <p data-ng-hide="item.edit || editingInProgress">
-                        <a data-ng-click="editSwitch(item)" href="javascript:;">Edit</a> |
-                        <a data-ng-click="delete(item.id)" href="javascript:;">Delete</a></p>
-                    <p data-ng-show="item.edit"><a data-ng-click="update(item)" href="javascript:;">Save</a> |
-                        <a data-ng-click="editSwitch(item)" href="javascript:;">Cancel</a></p>
-                </td>
-
-            </tr>
-            </tbody>
-        </table>
+        <ul class="list-group">
+            <div class="list-group-item list-group-item-action flex-column align-items-start" data-ng-repeat="item in todoList">
+                <div data-ng-hide="item.edit">
+                    <input type="checkbox" data-ng-model="item.finish" data-ng-change="finishSwitch(item)"/>
+                    <span data-hide-show="item.finish">{{item.description}}</span>
+                    <span data-ng-show="item.finish"><del>{{item.description}}</del></span>
+                    <button type="button" class="btn btn-success float-right" data-ng-click="editSwitch(item)" style="margin-left: 5px">Edit</button>
+                    <button type="button" class="btn btn-danger float-right" data-ng-click="delete(item.id)" style="margin-left: 5px">Delete</button>
+                </div>
+                <div data-ng-show="item.edit" class="input-group">
+                    <input class="form-control" data-ng-model="editInProgressTodo.description" />
+                    <span class="input-group-btn">
+                        <button type="button" data-ng-click="update(item)" class="btn btn-primary float-right" style="margin-left: 5px">Save</button>
+                        <button type="button" data-ng-click="editSwitch(item)"  class="btn btn-secondary float-right" style="margin-left: 5px">Cancel</button>
+                    </span>
+                </div>
+            </div>
+        </ul>
     </div>
 </div>

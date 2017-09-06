@@ -10,7 +10,16 @@ angular.module('todoApp')
 
         $scope.editInProgressTodo = {
             description: "",
-            id: 0
+            id: 0,
+            finish: false
+        };
+
+        $scope.finishSwitch = function (todo) {
+            todoListSvc.putItem(todo).error(function (err) {
+                todo.finish = !todo.finish;
+                $scope.error = err;
+                $scope.loadingMessage = "";
+            })
         };
 
 
@@ -19,6 +28,7 @@ angular.module('todoApp')
             if (todo.edit) {
                 $scope.editInProgressTodo.description = todo.description;
                 $scope.editInProgressTodo.id = todo.id;
+                $scope.editInProgressTodo.finish = todo.finish;
                 $scope.editingInProgress = true;
             } else {
                 $scope.editingInProgress = false;
@@ -37,16 +47,18 @@ angular.module('todoApp')
             todoListSvc.deleteItem(id).success(function (results) {
                 $scope.populate();
                 $scope.loadingMessage = "deleteItem: " + results;
+                $scope.error = "";
             }).error(function (err) {
                 $scope.error = err;
                 $scope.loadingMessage = "";
             })
         };
         $scope.update = function (todo) {
-            todoListSvc.putItem($scope.editInProgressTodo).success(function (results) {
+            todoListSvc.putItem(todo).success(function (results) {
                 $scope.populate();
                 $scope.editSwitch(todo);
                 $scope.loadingMessage = "putItem: " + results;
+                $scope.error = "";
             }).error(function (err) {
                 $scope.error = err;
                 $scope.loadingMessage = "";
@@ -59,7 +71,6 @@ angular.module('todoApp')
                 return user;
             }
 
-
             todoListSvc.postItem({
                 'description': $scope.newTodoCaption,
                 'owner': getUser(),
@@ -67,6 +78,7 @@ angular.module('todoApp')
                 $scope.newTodoCaption = "";
                 $scope.populate();
                 $scope.loadingMessage = "postItem: " + results;
+                $scope.error = "";
             }).error(function (err) {
                 $scope.error = err;
                 $scope.loadingMsg = "";
