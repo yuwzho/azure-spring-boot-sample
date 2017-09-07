@@ -1,17 +1,14 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-    <title>Todo List: a SPA sample demonstrating Azure AD and ADAL JS</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="theme-color" content="#000000" />
+    <title>Todo List: Azure Spring Boot Sample</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" />
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.25/angular.min.js"></script>
-<script src="https://code.angularjs.org/1.2.25/angular-route.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js"></script>
-<script src="Scripts/app.js"></script>
-<script src="Scripts/homeCtrl.js"></script>
-<script src="Scripts/todoListCtrl.js"></script>
-<script src="Scripts/todoListSvc.js"></script>
+    <style>
+        .list-group-item { word-wrap: break-word; }
+    </style>
 </head>
 <body ng-app="todoApp" ng-controller="homeCtrl" role="document">
 <nav class="navbar fixed-top navbar-expand-sm navbar-dark bg-dark">
@@ -29,17 +26,18 @@
     </div>
 </nav>
 
-<div class="container">
-    <div class="jumbotron" style="background-color:transparent !important; margin-top: 40px !important;">
-        <h1>Todo List</h1>
-        <p>This sample demonstrates ??????? (some sentences)</p>
-    </div>
-</div>
-
-
-<div class="container" role="main">
+<div class="container" role="main" style="margin-top: 80px !important;">
     <div ng-view class="panel-body">
 </div>
 </div>
 </body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.25/angular.min.js"></script>
+<script src="https://code.angularjs.org/1.2.25/angular-route.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js"></script>
+<script src="Scripts/app.js"></script>
+<script src="Scripts/homeCtrl.js"></script>
+<script src="Scripts/todoListCtrl.js"></script>
+<script src="Scripts/todoListSvc.js"></script>
 </html>

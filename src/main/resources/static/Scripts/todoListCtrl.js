@@ -74,6 +74,7 @@ angular.module('todoApp')
             todoListSvc.postItem({
                 'description': $scope.newTodoCaption,
                 'owner': getUser(),
+                'finish': 'false'
             }).success(function (results) {
                 $scope.newTodoCaption = "";
                 $scope.populate();

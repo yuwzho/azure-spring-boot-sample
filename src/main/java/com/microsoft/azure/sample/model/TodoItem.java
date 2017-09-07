@@ -25,6 +25,7 @@ public class TodoItem {
         this.description = description;
         this.id = id;
         this.owner = owner;
+        this.finish = false;
     }
 
     public boolean isFinish() {
