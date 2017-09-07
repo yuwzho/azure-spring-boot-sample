@@ -69,7 +69,13 @@ public class TodolistController {
      */
     @RequestMapping(value = "/api/todolist", method = RequestMethod.PUT, consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<String> updateTodoItem(@RequestBody TodoItem item) {
-        return new ResponseEntity<String>("Not implement", HttpStatus.NOT_IMPLEMENTED);
+        try {
+            todoItemRepository.delete(item.getID());
+            todoItemRepository.save(item);
+            return new ResponseEntity<String>("Entity is updated", HttpStatus.OK);
+        } catch (Exception e) {
+            return new ResponseEntity<String>("Not implemented yet", HttpStatus.NOT_IMPLEMENTED);
+        }
     }
 
     /**

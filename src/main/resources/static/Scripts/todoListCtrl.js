@@ -54,7 +54,7 @@ angular.module('todoApp')
             })
         };
         $scope.update = function (todo) {
-            todoListSvc.putItem(todo).success(function (results) {
+            todoListSvc.putItem($scope.editInProgressTodo).success(function (results) {
                 $scope.populate();
                 $scope.editSwitch(todo);
                 $scope.loadingMessage = "putItem: " + results;
